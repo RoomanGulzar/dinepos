@@ -384,12 +384,12 @@ function checkout() {
     const cartTotalAmount = document.getElementById('cartTotalAmount');
 
     // Clear cart items
-    if(cartItems)
-    cartItems.innerHTML = '';
+    if (cartItems)
+        cartItems.innerHTML = '';
 
     // Reset total amount
-    if(cartTotalAmount)
-    cartTotalAmount.textContent = '0.00';
+    if (cartTotalAmount)
+        cartTotalAmount.textContent = '0.00';
 }
 
 toastr.options = {
@@ -495,13 +495,18 @@ function KotPrinted(flag) {
 function CheckoutOrder() {
     debugger;
     var orderId = $("#orderId").val();
+    var venueId = $("#hdn_venueId").val();
     var totaldiscount = $("#totaldiscount").val();
     $.ajax({
         url: '/OrderManagement/ManageOrder/Checkout',
         type: 'GET',
         dataType: 'html',
         async: false,
-        data: { orderId: orderId, totalDiscount: totaldiscount },
+        data: {
+            orderId: orderId,
+            totalDiscount: totaldiscount,
+            venueId: venueId
+        },
         success: function (response) {
             const cartItems = document.getElementById('cartItems');
             const cartTotalAmount = document.getElementById('cartTotalAmount');
