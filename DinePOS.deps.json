@@ -49,6 +49,7 @@
           "Oscore.QrCodes": "1.1.1",
           "Oscore.QrCodes.ImageSharp": "1.1.1",
           "Oscore.QrCodes.SkiaSharp": "1.1.1",
+          "SkiaSharp.NativeAssets.Linux": "3.119.1",
           "System.Text.Json": "9.0.10",
           "iTextSharp": "5.5.13.4",
           "Microsoft.AspNetCore.Antiforgery": "8.0.0.0",
@@ -2304,6 +2305,7 @@
           "ref/net8.0/SkiaSharp.dll": {}
         }
       },
+      "SkiaSharp.NativeAssets.Linux/3.119.1": {},
       "SkiaSharp.NativeAssets.macOS/3.116.0": {},
       "SkiaSharp.NativeAssets.Win32/3.116.0": {},
       "System.CodeDom/4.4.0": {},
@@ -2458,6 +2460,7 @@
           "Oscore.QrCodes": "1.1.1",
           "Oscore.QrCodes.ImageSharp": "1.1.1",
           "Oscore.QrCodes.SkiaSharp": "1.1.1",
+          "SkiaSharp.NativeAssets.Linux": "3.119.1",
           "System.Text.Json": "9.0.10",
           "iTextSharp": "5.5.13.4",
           "Microsoft.AspNetCore.Antiforgery": "8.0.0.0",
@@ -4706,6 +4709,13 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.Linux/3.119.1": {
+        "native": {
+          "runtimes/linux-x64/native/libSkiaSharp.so": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "SkiaSharp.NativeAssets.macOS/3.116.0": {},
       "SkiaSharp.NativeAssets.Win32/3.116.0": {},
       "System.CodeDom/4.4.0": {},
@@ -5370,6 +5380,13 @@
       "sha512": "sha512-HvLQXua/TWp7eYWaY3R69b4Tm8AdedfXkKHY3MIgjYFNoQqwPfOd7/u1Bqs8WiBoSa2ISjqUnqzitpihlkvFfQ==",
       "path": "skiasharp/3.116.0",
       "hashPath": "skiasharp.3.116.0.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Linux/3.119.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9YNoc4SeKvQhrwiqwT4ezkNfMywPdPSK+UFvo/CaoXqLixcnYOTsQKm5BF9mc4+q3vKgDtEgMt0d1ygZhJTEHg==",
+      "path": "skiasharp.nativeassets.linux/3.119.1",
+      "hashPath": "skiasharp.nativeassets.linux.3.119.1.nupkg.sha512"
     },
     "SkiaSharp.NativeAssets.macOS/3.116.0": {
       "type": "package",
