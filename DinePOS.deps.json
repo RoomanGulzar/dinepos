@@ -46,10 +46,9 @@
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0",
           "Newtonsoft.Json": "13.0.4",
           "NuGet.Packaging": "6.14.0",
-          "Oscore.QrCodes": "1.1.1",
-          "Oscore.QrCodes.ImageSharp": "1.1.1",
-          "Oscore.QrCodes.SkiaSharp": "1.1.1",
-          "SkiaSharp.NativeAssets.Linux.NoDependencies": "3.116.1",
+          "QRCoder": "1.7.0",
+          "QRCoder-ImageSharp": "0.10.0",
+          "SixLabors.ImageSharp": "3.1.12",
           "System.Text.Json": "9.0.10",
           "iTextSharp": "5.5.13.4",
           "Microsoft.AspNetCore.Antiforgery": "8.0.0.0",
@@ -319,6 +318,7 @@
           "System.Security.SecureString": "8.0.0.0",
           "System.ServiceModel.Web": "4.0.0.0",
           "System.ServiceProcess": "4.0.0.0",
+          "System.Text.Encoding.CodePages.Reference": "8.0.0.0",
           "System.Text.Encoding": "8.0.0.0",
           "System.Text.Encoding.Extensions": "8.0.0.0",
           "System.Text.RegularExpressions": "8.0.0.0",
@@ -1689,6 +1689,11 @@
           "System.ServiceProcess.dll": {}
         }
       },
+      "System.Text.Encoding.CodePages.Reference/8.0.0.0": {
+        "compile": {
+          "System.Text.Encoding.CodePages.dll": {}
+        }
+      },
       "System.Text.Encoding/8.0.0.0": {
         "compile": {
           "System.Text.Encoding.dll": {}
@@ -1941,7 +1946,7 @@
           "System.Collections.Immutable": "8.0.0",
           "System.Reflection.Metadata": "6.0.1",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encoding.CodePages": "9.0.0"
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {}
@@ -1996,7 +2001,7 @@
           "System.Runtime.Caching": "6.0.0",
           "System.Security.Cryptography.Cng": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0",
-          "System.Text.Encoding.CodePages": "9.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0",
           "System.Text.Encodings.Web": "9.0.10"
         },
         "compile": {
@@ -2200,7 +2205,11 @@
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/6.0.0": {},
+      "Microsoft.Win32.SystemEvents/6.0.0": {
+        "compile": {
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {}
+        }
+      },
       "Mono.TextTemplating/2.2.1": {
         "dependencies": {
           "System.CodeDom": "4.4.0"
@@ -2250,64 +2259,25 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
         }
       },
-      "Oscore.QrCodes/1.1.1": {
+      "QRCoder/1.7.0": {
         "dependencies": {
-          "System.Text.Encoding.CodePages": "9.0.0"
+          "System.Drawing.Common": "6.0.0"
         },
         "compile": {
-          "lib/net8.0/QrCodes.dll": {}
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
-      "Oscore.QrCodes.ImageSharp/1.1.1": {
+      "QRCoder-ImageSharp/0.10.0": {
         "dependencies": {
-          "Oscore.QrCodes": "1.1.1",
-          "SixLabors.ImageSharp": "3.1.6",
-          "SixLabors.ImageSharp.Drawing": "2.1.4"
-        },
-        "compile": {
-          "lib/net8.0/QrCodes.ImageSharp.dll": {}
+          "SixLabors.ImageSharp": "3.1.12",
+          "System.Text.Encoding.CodePages": "8.0.0"
         }
       },
-      "Oscore.QrCodes.SkiaSharp/1.1.1": {
-        "dependencies": {
-          "Oscore.QrCodes": "1.1.1",
-          "SkiaSharp": "3.116.0"
-        },
-        "compile": {
-          "lib/net8.0/QrCodes.SkiaSharp.dll": {}
-        }
-      },
-      "SixLabors.Fonts/2.0.4": {
-        "compile": {
-          "lib/net6.0/SixLabors.Fonts.dll": {}
-        }
-      },
-      "SixLabors.ImageSharp/3.1.6": {
+      "SixLabors.ImageSharp/3.1.12": {
         "compile": {
           "lib/net6.0/SixLabors.ImageSharp.dll": {}
         }
       },
-      "SixLabors.ImageSharp.Drawing/2.1.4": {
-        "dependencies": {
-          "SixLabors.Fonts": "2.0.4",
-          "SixLabors.ImageSharp": "3.1.6"
-        },
-        "compile": {
-          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {}
-        }
-      },
-      "SkiaSharp/3.116.0": {
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "3.116.0",
-          "SkiaSharp.NativeAssets.macOS": "3.116.0"
-        },
-        "compile": {
-          "ref/net8.0/SkiaSharp.dll": {}
-        }
-      },
-      "SkiaSharp.NativeAssets.Linux.NoDependencies/3.116.1": {},
-      "SkiaSharp.NativeAssets.macOS/3.116.0": {},
-      "SkiaSharp.NativeAssets.Win32/3.116.0": {},
       "System.CodeDom/4.4.0": {},
       "System.Collections.Immutable/8.0.0": {},
       "System.Composition/6.0.0": {
@@ -2352,6 +2322,9 @@
       "System.Drawing.Common/6.0.0": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Drawing.Common.dll": {}
         }
       },
       "System.Formats.Asn1/6.0.0": {},
@@ -2417,11 +2390,7 @@
         }
       },
       "System.Security.Principal.Windows/5.0.0": {},
-      "System.Text.Encoding.CodePages/9.0.0": {
-        "compile": {
-          "lib/net8.0/System.Text.Encoding.CodePages.dll": {}
-        }
-      },
+      "System.Text.Encoding.CodePages/8.0.0": {},
       "System.Text.Encodings.Web/9.0.10": {
         "compile": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {}
@@ -2457,10 +2426,9 @@
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0",
           "Newtonsoft.Json": "13.0.4",
           "NuGet.Packaging": "6.14.0",
-          "Oscore.QrCodes": "1.1.1",
-          "Oscore.QrCodes.ImageSharp": "1.1.1",
-          "Oscore.QrCodes.SkiaSharp": "1.1.1",
-          "SkiaSharp.NativeAssets.Linux.NoDependencies": "3.116.1",
+          "QRCoder": "1.7.0",
+          "QRCoder-ImageSharp": "0.10.0",
+          "SixLabors.ImageSharp": "3.1.12",
           "System.Text.Json": "9.0.10",
           "iTextSharp": "5.5.13.4",
           "Microsoft.AspNetCore.Antiforgery": "8.0.0.0",
@@ -2730,6 +2698,7 @@
           "System.Security.SecureString": "8.0.0.0",
           "System.ServiceModel.Web": "4.0.0.0",
           "System.ServiceProcess": "4.0.0.0",
+          "System.Text.Encoding.CodePages.Reference": "8.0.0.0",
           "System.Text.Encoding": "8.0.0.0",
           "System.Text.Encoding.Extensions": "8.0.0.0",
           "System.Text.RegularExpressions": "8.0.0.0",
@@ -3299,6 +3268,10 @@
           },
           "System.ServiceProcess.dll": {
             "assemblyVersion": "4.0.0.0",
+            "fileVersion": "8.0.2025.41914"
+          },
+          "System.Text.Encoding.CodePages.dll": {
+            "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.2025.41914"
           },
           "System.Text.Encoding.Extensions.dll": {
@@ -4163,7 +4136,7 @@
           "System.Collections.Immutable": "8.0.0",
           "System.Reflection.Metadata": "6.0.1",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encoding.CodePages": "9.0.0"
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {
@@ -4309,7 +4282,7 @@
           "System.Runtime.Caching": "6.0.0",
           "System.Security.Cryptography.Cng": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0",
-          "System.Text.Encoding.CodePages": "9.0.0",
+          "System.Text.Encoding.CodePages": "8.0.0",
           "System.Text.Encodings.Web": "9.0.10"
         },
         "runtime": {
@@ -4633,91 +4606,31 @@
           }
         }
       },
-      "Oscore.QrCodes/1.1.1": {
+      "QRCoder/1.7.0": {
         "dependencies": {
-          "System.Text.Encoding.CodePages": "9.0.0"
+          "System.Drawing.Common": "6.0.0"
         },
         "runtime": {
-          "lib/net8.0/QrCodes.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.1.1.0"
+          "lib/net6.0/QRCoder.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
           }
         }
       },
-      "Oscore.QrCodes.ImageSharp/1.1.1": {
+      "QRCoder-ImageSharp/0.10.0": {
         "dependencies": {
-          "Oscore.QrCodes": "1.1.1",
-          "SixLabors.ImageSharp": "3.1.6",
-          "SixLabors.ImageSharp.Drawing": "2.1.4"
-        },
-        "runtime": {
-          "lib/net8.0/QrCodes.ImageSharp.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.1.1.0"
-          }
+          "SixLabors.ImageSharp": "3.1.12",
+          "System.Text.Encoding.CodePages": "8.0.0"
         }
       },
-      "Oscore.QrCodes.SkiaSharp/1.1.1": {
-        "dependencies": {
-          "Oscore.QrCodes": "1.1.1",
-          "SkiaSharp": "3.116.0"
-        },
-        "runtime": {
-          "lib/net8.0/QrCodes.SkiaSharp.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.1.1.0"
-          }
-        }
-      },
-      "SixLabors.Fonts/2.0.4": {
-        "runtime": {
-          "lib/net6.0/SixLabors.Fonts.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.4.0"
-          }
-        }
-      },
-      "SixLabors.ImageSharp/3.1.6": {
+      "SixLabors.ImageSharp/3.1.12": {
         "runtime": {
           "lib/net6.0/SixLabors.ImageSharp.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.6.0"
+            "fileVersion": "3.1.12.0"
           }
         }
       },
-      "SixLabors.ImageSharp.Drawing/2.1.4": {
-        "dependencies": {
-          "SixLabors.Fonts": "2.0.4",
-          "SixLabors.ImageSharp": "3.1.6"
-        },
-        "runtime": {
-          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.1.4.0"
-          }
-        }
-      },
-      "SkiaSharp/3.116.0": {
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "3.116.0",
-          "SkiaSharp.NativeAssets.macOS": "3.116.0"
-        },
-        "runtime": {
-          "lib/net8.0/SkiaSharp.dll": {
-            "assemblyVersion": "3.116.0.0",
-            "fileVersion": "3.116.0.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.Linux.NoDependencies/3.116.1": {
-        "native": {
-          "runtimes/linux-x64/native/libSkiaSharp.so": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.macOS/3.116.0": {},
-      "SkiaSharp.NativeAssets.Win32/3.116.0": {},
       "System.CodeDom/4.4.0": {},
       "System.Collections.Immutable/8.0.0": {},
       "System.Composition/6.0.0": {
@@ -4860,14 +4773,7 @@
         }
       },
       "System.Security.Principal.Windows/5.0.0": {},
-      "System.Text.Encoding.CodePages/9.0.0": {
-        "runtime": {
-          "lib/net8.0/System.Text.Encoding.CodePages.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
-          }
-        }
-      },
+      "System.Text.Encoding.CodePages/8.0.0": {},
       "System.Text.Encodings.Web/9.0.10": {
         "runtime": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
@@ -5332,75 +5238,26 @@
       "path": "nuget.versioning/6.14.0",
       "hashPath": "nuget.versioning.6.14.0.nupkg.sha512"
     },
-    "Oscore.QrCodes/1.1.1": {
+    "QRCoder/1.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nawn6JQdjgi1soYc3068MS+yTUpUpE3U/Mp4RShz8TPdk0nB7hy08lKUoQv8BCTx5I/Ev6UYW56xzHg8BBiIaw==",
-      "path": "oscore.qrcodes/1.1.1",
-      "hashPath": "oscore.qrcodes.1.1.1.nupkg.sha512"
+      "sha512": "sha512-6R3hQkayihGIDjp3F1nLRDBWG+nqahGyOY2+fH4Rll16Vad67oaUUfHkOiMWKiJFnGh+PIGDfUos+0R9m54O1g==",
+      "path": "qrcoder/1.7.0",
+      "hashPath": "qrcoder.1.7.0.nupkg.sha512"
     },
-    "Oscore.QrCodes.ImageSharp/1.1.1": {
+    "QRCoder-ImageSharp/0.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SuZZcpX4eczHOlm/kVFckcikZVKkGj4ZzmvEIV4rsAHNxVhorO7Tlqi9hdlpMn/2lpKcw7blmE/rPfyI9Gq3ng==",
-      "path": "oscore.qrcodes.imagesharp/1.1.1",
-      "hashPath": "oscore.qrcodes.imagesharp.1.1.1.nupkg.sha512"
+      "sha512": "sha512-Gk45RWAK/XIg5PjhlU8IusuYYiZmvzL1pPTH+FG2/Q3anTlIATWoCx5yqKsEFhZUz9mn+Sa2MPvawpqxVx10HA==",
+      "path": "qrcoder-imagesharp/0.10.0",
+      "hashPath": "qrcoder-imagesharp.0.10.0.nupkg.sha512"
     },
-    "Oscore.QrCodes.SkiaSharp/1.1.1": {
+    "SixLabors.ImageSharp/3.1.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XHPoOy/vgs95pppwryz9OFG3kXF7UBV9N9K3Pz8lzWwnQ5Jmp8PtWMPU6JhNOSP+ZG1hFXiF+pL/KZ7zfaE1Qg==",
-      "path": "oscore.qrcodes.skiasharp/1.1.1",
-      "hashPath": "oscore.qrcodes.skiasharp.1.1.1.nupkg.sha512"
-    },
-    "SixLabors.Fonts/2.0.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4+NKz8W36injp98lmmM07ncp08HAK8c6FZz8vLoKxRPfJeEVWpBHlLYEbQa5rcqKKYqxUv/RVCrb8XcPhfMKUQ==",
-      "path": "sixlabors.fonts/2.0.4",
-      "hashPath": "sixlabors.fonts.2.0.4.nupkg.sha512"
-    },
-    "SixLabors.ImageSharp/3.1.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dHQ5jugF9v+5/LCVHCWVzaaIL6WOehqJy6eju/0VFYFPEj2WtqkGPoEV9EVQP83dHsdoqYaTuWpZdwAd37UwfA==",
-      "path": "sixlabors.imagesharp/3.1.6",
-      "hashPath": "sixlabors.imagesharp.3.1.6.nupkg.sha512"
-    },
-    "SixLabors.ImageSharp.Drawing/2.1.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-p4VwtAABggDUhUS5zXldCZHVGfjJl76+SrBHY4biNQ8+890igFK6RL87qIv9GqvEjMcYOar1sPkf2iMQ6uq9/g==",
-      "path": "sixlabors.imagesharp.drawing/2.1.4",
-      "hashPath": "sixlabors.imagesharp.drawing.2.1.4.nupkg.sha512"
-    },
-    "SkiaSharp/3.116.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HvLQXua/TWp7eYWaY3R69b4Tm8AdedfXkKHY3MIgjYFNoQqwPfOd7/u1Bqs8WiBoSa2ISjqUnqzitpihlkvFfQ==",
-      "path": "skiasharp/3.116.0",
-      "hashPath": "skiasharp.3.116.0.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.Linux.NoDependencies/3.116.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yER+zmZzK4G642j0fbOBg3ZfLUs93o1kmHEXEOPZgMCzGVSmLvGmsFYIIlIQaMEpWY/TktFiZGqEKkT1RJ/YjQ==",
-      "path": "skiasharp.nativeassets.linux.nodependencies/3.116.1",
-      "hashPath": "skiasharp.nativeassets.linux.nodependencies.3.116.1.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.macOS/3.116.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-k98/ZVE7U2omT/NtPiSwRGG9NbqfRA35L89/NqR6G0MVLuedR7Vi25NIxaYr/ExZyORUAq7Gtd3XOgGQvZTAPw==",
-      "path": "skiasharp.nativeassets.macos/3.116.0",
-      "hashPath": "skiasharp.nativeassets.macos.3.116.0.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.Win32/3.116.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0uYDLypyfKGfzW/pfRcDNBTMXYKLwF3IUqL0RBF1hyi63ghFxFNr2q4o/00lhxwvKj34rP3RHekY4CA2c8i9LA==",
-      "path": "skiasharp.nativeassets.win32/3.116.0",
-      "hashPath": "skiasharp.nativeassets.win32.3.116.0.nupkg.sha512"
+      "sha512": "sha512-iAg6zifihXEFS/t7fiHhZBGAdCp3FavsF4i2ZIDp0JfeYeDVzvmlbY1CNhhIKimaIzrzSi5M/NBFcWvZT2rB/A==",
+      "path": "sixlabors.imagesharp/3.1.12",
+      "hashPath": "sixlabors.imagesharp.3.1.12.nupkg.sha512"
     },
     "System.CodeDom/4.4.0": {
       "type": "package",
@@ -5584,12 +5441,12 @@
       "path": "system.security.principal.windows/5.0.0",
       "hashPath": "system.security.principal.windows.5.0.0.nupkg.sha512"
     },
-    "System.Text.Encoding.CodePages/9.0.0": {
+    "System.Text.Encoding.CodePages/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GxJTSFPQpoVd0vQRgq8hwesicxgZoHTbYMvR/UMM4IzhkHMT+ebZE11c2C1gUyxz55zWtGCWktMTHvmgLzob9g==",
-      "path": "system.text.encoding.codepages/9.0.0",
-      "hashPath": "system.text.encoding.codepages.9.0.0.nupkg.sha512"
+      "sha512": "sha512-OZIsVplFGaVY90G2SbpgU7EnCoOO5pw1t4ic21dBF3/1omrJFpAGoNAVpPyMVOC90/hvgkGG3VFqR13YgZMQfg==",
+      "path": "system.text.encoding.codepages/8.0.0",
+      "hashPath": "system.text.encoding.codepages.8.0.0.nupkg.sha512"
     },
     "System.Text.Encodings.Web/9.0.10": {
       "type": "package",
@@ -6957,6 +6814,11 @@
       "sha512": ""
     },
     "System.ServiceProcess/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Text.Encoding.CodePages.Reference/8.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
