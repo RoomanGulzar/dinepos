@@ -174,6 +174,23 @@ function LoadOrder() {
 
 }
 
+function LoadVenuOrders(venueId) {
+    $.ajax({
+        url: '/OrderManagement/PosPortal/LoadOrder',
+        type: 'GET',
+        dataType: 'html',
+        data: {
+            venueId: venueId,
+        },
+        success: function (response) {
+            $('#cart').html(response);
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
 // load orders by order no
 //function LoadOrderByOrderNo() {
 //    debugger;
