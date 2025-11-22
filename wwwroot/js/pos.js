@@ -1,6 +1,7 @@
 ﻿//============================================FROM POS==========================================================//
 // Function to add an item to the cart
-function addToCart(itemName, itemPrice, count, itemId) {
+async function addToCart(itemName, itemPrice, count, itemId) {
+    debugger;
     var orderId = $("#orderId").val();
     var venueId = $("#Venue").val();
     var staffId = $("#staffId").val();
@@ -9,10 +10,16 @@ function addToCart(itemName, itemPrice, count, itemId) {
         type: 'GET',
         dataType: 'html',
         data: { itemId: itemId, count: count, orderId: orderId, VenueId: venueId, staffId: staffId }, // Replace with your data if any
-        success: function (response) {
+        success: async function (response) {
             // Show success toast message
             //toastr.success('Operation successful!', 'Success');
+            var orderId = $("#orderId").val();
+            
             $('#cart').html(response);
+            if (orderId == 0) {
+                var orderId = $("#orderId").val();
+                await UpdateCartOrderFields(orderId);
+            }
             OrderTotalBill()
 
         },
@@ -69,11 +76,10 @@ function ChangeQuantity(itemId, value) {
 }
 
 
-function UpdateCartOrderFields() {
+async function UpdateCartOrderFields(orderId=0) {
     $.ajax({
-        url: '/OrderManagement/ManageOrder/CartOrderFields',
+        url: '/OrderManagement/ManageOrder/CartOrderFields?orderId='+orderId,
         success: function (response) {
-            console.log(response);
             $('#CartOrderFields').html('');
             $('#CartOrderFields').html(response);
         }
@@ -146,11 +152,18 @@ function Search(category, _this) {
 // load orders on venue base
 function LoadOrder() {
     var venueId = $("#Venue").val();
+    var staffId = $("#staffId").val();
+    var ordno = $("#ordno").val();
+
     $.ajax({
-        url: '/OrderManagement/PosPortal/VenueOrder',
+        url: '/OrderManagement/PosPortal/LoadOrder',
         type: 'GET',
         dataType: 'html',
-        data: { venueId: venueId },
+        data: {
+            venueId: venueId,
+            staffId: staffId,
+            ordno: ordno
+        },
         success: function (response) {
             $('#cart').html(response);
         },
@@ -162,42 +175,42 @@ function LoadOrder() {
 }
 
 // load orders by order no
-function LoadOrderByOrderNo() {
-    debugger;
-    var ordno = $("#ordno").val();
-    $.ajax({
-        url: '/OrderManagement/PosPortal/EmployeeOrder',
-        type: 'GET',
-        dataType: 'html',
-        data: { orderId: 0, venueId: 0, ordno: ordno },
-        success: function (response) {
-            $('#cart').html(response);
-            OrderTotalBill()
-        },
-        error: function (xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
+//function LoadOrderByOrderNo() {
+//    debugger;
+//    var ordno = $("#ordno").val();
+//    $.ajax({
+//        url: '/OrderManagement/PosPortal/EmployeeOrder',
+//        type: 'GET',
+//        dataType: 'html',
+//        data: { orderId: 0, venueId: 0, ordno: ordno },
+//        success: function (response) {
+//            $('#cart').html(response);
+//            OrderTotalBill()
+//        },
+//        error: function (xhr, status, error) {
+//            console.error(error);
+//        }
+//    });
+//}
 
-// load orders on venue base
-function LoadOrderNo() {
-    debugger;
-    var staffId = $("#staffId").val();
-    $.ajax({
-        url: '/OrderManagement/ManageOrder/LoadOrderNos',
-        data: { employeeId: staffId },
-        type: 'GET',
-        dataType: 'html',
-        success: function (response) {
-            $('#orderNos').html(response);
-            LoadOrder();
-        },
-        error: function (xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
+//// load orders on venue base
+//function LoadOrderNo() {
+//    debugger;
+//    var staffId = $("#staffId").val();
+//    $.ajax({
+//        url: '/OrderManagement/ManageOrder/LoadOrderNos',
+//        data: { employeeId: staffId },
+//        type: 'GET',
+//        dataType: 'html',
+//        success: function (response) {
+//            $('#orderNos').html(response);
+//            LoadOrder();
+//        },
+//        error: function (xhr, status, error) {
+//            console.error(error);
+//        }
+//    });
+//}
 // change discount
 function ChangeDiscount(previousTotal) {
     previousTotal = parseFloat(previousTotal);
@@ -397,7 +410,7 @@ toastr.options = {
     "debug": false,
     "newestOnTop": false,
     "progressBar": false, // Show progress bar
-    "positionClass": "toast-top-right", // Position of the toast
+    "positionClass": "toast-bottom-center", // Position of the toast
     "preventDuplicates": false,
     "onclick": null,
     "showDuration": "300",
@@ -456,12 +469,12 @@ function GetKot() {
         url: '/OrderManagement/ManageOrder/OrderKot',
         type: 'GET',
         dataType: 'html',
-        async: false,
+        async: true,
         data: { orderId: orderId },
-        success: function (response) {
+        success: async function (response) {
             $('#kotdetails').html(response);
             PrintReceipt('kotdetails');
-            UpdateCartOrderFields();
+            await UpdateCartOrderFields();
 
         },
         error: function (xhr, status, error) {
@@ -518,7 +531,7 @@ function CheckoutOrder() {
             PrintReceipt('orderdetails', 'checkout');
             $('#staffId').val(0);
             $('#ordno').val('');
-            LoadOrderNo();
+            LoadOrder();
 
             UpdateCartOrderFields();
 
@@ -626,4 +639,21 @@ function setActiveTab(element) {
 
     // add active class to the clicked link
     element.classList.add('active');
+}
+
+function setDropdownValueWithoutChange(dropdownId, value) {
+    var $ddl = $("#" + dropdownId);
+
+    // temporarily unbind change handlers
+    var events = $._data($ddl[0], "events");
+    var changeEvents = events?.change || [];
+
+    // remove handlers
+    changeEvents.forEach(e => $ddl.off("change", e.handler));
+
+    // set value silently
+    $ddl.val(value);
+
+    // rebind handlers
+    changeEvents.forEach(e => $ddl.on("change", e.handler));
 }
